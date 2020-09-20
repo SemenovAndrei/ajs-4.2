@@ -1,11 +1,3 @@
-export default function getHealthValue(obj) {
-  if (obj.health > 50) {
-    return "healthy";
-  }
-
-  if (obj.health < 15) {
-    return "critical";
-  }
-
-  return "wounded";
+export default function getArraySorted(arr) {
+  return arr.sort((a, b) => b.health - a.health);
 }

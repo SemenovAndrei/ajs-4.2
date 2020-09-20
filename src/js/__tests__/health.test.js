@@ -1,11 +1,79 @@
-import getHealthValue from "../health";
+import getArraySorted from "../health";
 
 test.each([
-  [{ name: "Маг", health: 51 }, "healthy"],
-  [{ name: "Маг", health: 14 }, "critical"],
-  [{ name: "Маг", health: 50 }, "wounded"],
-  [{ name: "Маг", health: 15 }, "wounded"],
-])("%o", (obj, expected) => {
-  const result = getHealthValue(obj);
-  expect(result).toBe(expected);
+  [
+    [
+      { name: "мечник", health: 10 },
+      { name: "лучник", health: 80 },
+      { name: "маг", health: 100 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+  [
+    [
+      { name: "мечник", health: 10 },
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+  [
+    [
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+      { name: "маг", health: 100 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+  [
+    [
+      { name: "лучник", health: 80 },
+      { name: "маг", health: 100 },
+      { name: "мечник", health: 10 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+  [
+    [
+      { name: "маг", health: 100 },
+      { name: "мечник", health: 10 },
+      { name: "лучник", health: 80 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+  [
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+    [
+      { name: "маг", health: 100 },
+      { name: "лучник", health: 80 },
+      { name: "мечник", health: 10 },
+    ],
+  ],
+])("%o", (arr, arrSort) => {
+  const result = getArraySorted(arr);
+  expect(result).toEqual(arrSort);
 });
